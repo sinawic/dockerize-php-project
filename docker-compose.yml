@@ -1,7 +1,8 @@
-version: '3.8'
+version: '3'
 services:
     php-apache-environment:
         container_name: php-apache
+        restart: always
         build:
             context: ./
             dockerfile: Dockerfile
@@ -15,6 +16,7 @@ services:
         container_name: db
         image: mysql
         restart: always
+        command: --default-authentication-plugin=mysql_native_password
         environment:
             MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
             MYSQL_DATABASE: MYSQL_DATABASE
